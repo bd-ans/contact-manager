@@ -28,17 +28,16 @@
 
 .contact-form-box-inner {
   animation: fade-in-hero-img .7s ease-in-out;
-  animation-delay: .1s;
-  margin-top: 31px;
+  margin-top: 0px;
 }
 
 @keyframes fade-in-hero-img {
   from {
     opacity: 0;
-    margin-top: 22px;
+    margin-top: -40px;
   }
   to {
     opacity: 1;
-    margin-top: 31px;
+    margin-top: 0px;
   }
 }
