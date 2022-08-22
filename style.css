@@ -1,0 +1,44 @@
+.main {
+  height: 100vh;
+}
+
+.contact-info-box {
+  height: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.new-contact-btn:hover,
+.search-input:hover,
+.delete-contact-btn:hover {
+  box-shadow:  0px 0px 10px rgba(190, 190, 190, 0.877) !important;
+}
+
+.contact-form-box {
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 99;
+}
+
+.none-hover:hover {
+  box-shadow: none !important;
+}
+
+/* contact form box */
+
+.contact-form-box-inner {
+  animation: fade-in-hero-img .7s ease-in-out;
+  animation-delay: .1s;
+  margin-top: 31px;
+}
+
+@keyframes fade-in-hero-img {
+  from {
+    opacity: 0;
+    margin-top: 22px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 31px;
+  }
+}
