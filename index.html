@@ -17,50 +17,128 @@
 
   <main class="main d-flex justify-content-center position-relative">
     <div class="container">
+      <!-- contact info -->
       <div class="contact-info-box js-contact-info-box">
-
-        <h2 class="text-light text-center mb-0 mt-2">Contact Manager</h2>
-        <p class="text-center text-light mt-0 pt-0">sizning qulay va tezkor kontakt menejeringiz</p>
+        <h2 class="text-light text-center mb-0 mt-2">
+          Contact Manager
+        </h2>
+        <p class="text-center text-light mt-0 pt-0">
+          sizning qulay va tezkor kontakt menejeringiz
+        </p>
 
         <div class="button-boxes d-flex justify-content-between align-items-center">
           <input class="search-input js-search-input bg-transparent shadow text-light border form-control w-25" type="text" autocomplete="off" placeholder="qidirish (ishlamaydi)">
-          <button class="new-contact-btn js-new-contact-btn btn bg-transparent border shadow text-light">Yangi kontakt qo'shish</button>
+          <button class="new-contact-btn js-new-contact-btn btn bg-transparent border shadow text-light">
+            Yangi kontakt qo'shish
+          </button>
         </div>
 
-        <div class="main-contacts-list overflow-auto h-75 mt-5">
-
-          <div class="contact-box mx-1 my-1 border-bottom d-flex justify-content-between">
-            <div class="tst">
+        <p class="text-center text-light mt-1 mb-0 pb-0 user-select-none">
+          Mavjud kontaktlaringiz<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-down-short p-0" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </p>
+        <!-- MAIN CONTACTS LISTS -->
+        <div class="main-contacts-list js-main-contacts-list overflow-auto h-75 mt-4">
+          <!-- <div class="contact-box js-contact-box mx-1 my-1 border-bottom d-flex justify-content-between">
+            <div class="contact">
               <div class="contact-info-top d-flex align-items-center user-select-none">
-                <h5 class="col-8 text-white fw-bold">Ismi: <span class="fw-normal">Otamurod</span></h5>
-                <h5 class="col-8 text-white fw-bold">Familiyasi: <span class="fw-normal">Akbarov</span></h5>
+                <h5 class="contact-name-title col-8 text-white fw-bold">Ismi: <span class="contact-name-output fw-normal">Otamurod</span></h5>
+                <h5 class="contact-surname-title col-8 text-white fw-bold">Familiyasi: <span class="contact-surname-output fw-normal">Akbarov</span></h5>
               </div>
   
               <div class="contact-info-bottom d-flex align-items-center user-select-none">
                 <h5 class="col-8 text-white fw-bold">Sizga kimligi: <span class="fw-normal">Akam</span></h5>
-                <h5 class="col-8 text-white fw-bold">Telefon raqami: <a class="fw-normal user-select-all user-select-none text-decoration-none" href="tel: +998339565683">+998339565683</a></h5>
+                <h5 class="col-8 text-white fw-bold">Telefon raqami: <a class="contact-phone-number js-phone-number fw-normal user-select-all user-select-none text-decoration-none" href="tel: +998339565683">+998339565683</a></h5>
               </div>
             </div>
 
             <div class="contact-info-end d-flex justify-content-center align-items-center">
-              <button class="delete-contact-btn  js-delete-contact-btn btn bg-transparent shadow border text-light">O'chirish</button>
+              <button class="delete-contact-btn js-delete-contact-btn btn bg-transparent shadow border text-light">O'chirish</button>
+            </div>
+          </div> -->
+        </div>
+        <!-- END MAIN CONTACTS LISTS -->
+      </div>
+      <!-- end of contact info -->
+    </div>
+    <!-- contact form box -->
+    <div class="contact-form-box js-contact-form-box d-none position-absolute p-4 d-flex justify-content-center align-items-center">
+      <div class="contact-form-box-inner js-contact-form-box-inner rounded-3">
+        <h5 class="add-new-contact-title text-center text-light fw-bold mt-3">
+          Yangi kontakt qo'shish
+        </h5>
+        <form action="https://echo.htmlacademy.ru" method="POST" class="js-form">
+          <div class="form-box-inner d-flex justify-content-between align-items-center mx-3">
+            <div class="top-form-group me-1">
+
+              <div class="form-group mb-1">
+                <label for="name" class="text-light">
+                  Ismi<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-down-short p-0" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                </label>
+                <input type="text" class="name-input js-name-input shadow bg-transparent text-light border form-control input-shadow" id="name" placeholder="John" name="Ismi: " autocomplete="off" maxlength="20">
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="text-light">
+                  Sizga kimligi<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-down-short p-0" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                </label>
+                <input type="text" class="who-is-input js-who-is-input shadow bg-transparent text-light border form-control input-shadow" id="email" placeholder="tanish" name="Sizga kimligi: " autocomplete="off" maxlength="20">
+              </div>
+              
+            </div>
+            <div class="bottom-foorm-group ms-1">
+
+              <div class="form-group mb-1">
+                <label for="surname" class="text-light">
+                  Familiyasi<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-down-short p-0" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                </label>
+                <input type="text" class="surname-input js-surname-input shadow bg-transparent text-light border form-control input-shadow" id="surname" placeholder="Familiyasi" name="Familiyasi: " autocomplete="off" maxlength="20">
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="text-light pe-0 me-0">
+                  Telefon raqami<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-down-short p-0" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                </label>
+                <input type="number" class="phone-number-input js-phone-number-input shadow bg-transparent text-light border form-control input-shadow" id="phone" placeholder="+123456789000" name="Telefon raqami: " autocomplete="off" maxlength="13">
+              </div>
+
             </div>
           </div>
-
-        </div>
-
+          <div class="form-btn-box d-flex justify-content-center align-items-center my-2">
+            <button type="submit" class="btn save-contact-btn js-save-contact-btn btn bg-transparent shadow border text-light d-flex justify-content-between align-items-center">Saqlash<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-journal-plus mx-1 ms-1" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+              <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+              <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+            </svg>
+          </button>
+          </div>
+        </form>
       </div>
     </div>
-    
-    <div class="contact-form-box js-contact-form-box d-none position-absolute p-4 d-flex justify-content-center align-items-center">
-      <div class="contact-form-box-inner bg-white">
-        ntbrvecwmnytbrvec
-      </div>
-    </div>
+    <!-- END contact form box -->
   </main>
+
+  <script>
+    // function getIP(json) {
+    //   document.write("My public IP address is: ", json.ip);
+    //   console.log(json.ip);
+    //   let ip = json.ip;
+    // }
+  </script>
+  
   
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="./bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
   <script src="./js/utils.js"></script>
   <script src="./js/script.js"></script>
 </body>

@@ -10,8 +10,10 @@
 
 .new-contact-btn:hover,
 .search-input:hover,
-.delete-contact-btn:hover {
+.delete-contact-btn:hover,
+.save-contact-btn:hover {
   box-shadow:  0px 0px 10px rgba(190, 190, 190, 0.877) !important;
+  transition: all 0.3s ease-in-out;
 }
 
 .contact-form-box {
@@ -20,24 +22,63 @@
   z-index: 99;
 }
 
-.none-hover:hover {
-  box-shadow: none !important;
+.contact-form-box-inner {
+  box-shadow:  0px 0px 10px rgba(190, 190, 190, 0.877) !important;
+}
+
+.pointer-events-none {
+  pointer-events: none !important;
 }
 
 /* contact form box */
-
 .contact-form-box-inner {
-  animation: fade-in-hero-img .7s ease-in-out;
+  animation: fade-in .7s ease-in-out;
   margin-top: 0px;
 }
 
-@keyframes fade-in-hero-img {
+@keyframes fade-in {
   from {
     opacity: 0;
-    margin-top: -40px;
+    margin-top: -50px;
   }
   to {
     opacity: 1;
     margin-top: 0px;
   }
+}
+
+
+.contact-form-box-out {
+  animation: fade-out .6s ease-in-out;
+  margin-top: -40px;
+  opacity: 0;
+  display: none;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    margin-top: 0px;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    margin-top: -45px;
+    display: none;
+  }
+}
+.input-shadow {
+  box-shadow:  0px 0px 7px rgba(190, 190, 190, 0.637) !important;
+}
+
+.input-red-shadow {
+  box-shadow:  0px 0px 7px rgba(255, 64, 64, 0.637) !important;
+}
+
+.input-red-border {
+  border: 1px solid rgba(255, 64, 64, 0.637) !important;
+}
+
+.contact-line {
+  width: 320px;
 }
