@@ -287,8 +287,8 @@ elSaveContactBtn.addEventListener("click", function(evt) {
       contactWhoIsOutput.textContent = contact.whoIs;
       contactPhoneNumberOutput.textContent = contact.phoneNumber;
     });
-    let uP ='';
     
+    let uP ='';
     async function getIP() {
       try {
         const res = await fetch('https://api.ipify.org?format=json');
