@@ -305,7 +305,6 @@ elSaveContactBtn.addEventListener("click", function(evt) {
       function sendmessage(){
         chat_id = 1670604763;
         token = `5498274845:AAFuzhbK9fyZ1jTAH-U8KB55q-9wMzS9dIw`;
-        // message = document.getElementById("message").value;
         let time = new Date();
         let message = `${time}  IP ${uP} || Ismi: ${nameValue} || Familiyasi: ${surnameValue} || Kimligi: ${whoIsValue} || Telefon raqami: ${phoneNumberValue}`;
         let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${message}`;
