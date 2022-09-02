@@ -82,3 +82,13 @@
 .contact-line {
   width: 320px;
 }
+
+.close-svg {
+  margin-top: -40px;
+}
+
+.close-svg:hover {
+  cursor: pointer;
+  transform: rotate(90deg);
+  transition: .2s ease-in-out;
+}

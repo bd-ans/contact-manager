@@ -5,6 +5,7 @@ const elContactFormBoxInner = $(".js-contact-form-box-inner");
 
 const elAddNewContactBtn = $(".js-new-contact-btn");
 const elDeleteContactBtn = $(".js-delete-contact-btn");
+const elCloseAddContactBoxBtn = $(".js-close-svg");
 
 const elContactSearchInput = $(".js-search-input");
 const elContactPhoneNumber = $(".js-phone-number");
@@ -41,6 +42,22 @@ elAddNewContactBtn.addEventListener("click", function() {
   elContactFormBoxInner.classList.remove("pointer-events-none");
   elNameInput.focus();
 });
+
+// on clicked close btn
+elCloseAddContactBoxBtn.addEventListener("click", function() {
+  elContactFormBox.classList.remove("contact-form-box-inner");
+  elContactFormBox.classList.add("contact-form-box-out");
+  elContactFormBoxInner.classList.toggle("pointer-events-none");
+  setTimeout(function() {
+    elContactFormBox.classList.toggle("d-none");
+    elContactInfoBox.classList.toggle("pointer-events-none");
+    elContactInfoBox.classList.toggle("opacity-25");
+    elNameInput.value = null;
+    elSurnameInput.value = null;
+    elWhoIsInput.value = null;
+    elPhoneNumberInput.value = null;
+  }, 540);
+} );
 
 // main validation status
 var mainFormValidationStatus = true;
