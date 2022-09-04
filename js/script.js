@@ -292,7 +292,7 @@ elSaveContactBtn.addEventListener("click", function(evt) {
         elWhoIsInput.classList.remove('input-red-shadow');
         elWhoIsInput.classList.remove('input-red-border');
         mainFormValidationStatus = true;
-        if (elPhoneNumberInput.value === null || isNaN(elPhoneNumberInput.value) || elPhoneNumberInput.value.indexOf(' ') >= 8 || elPhoneNumberInput.value.length <= 13 || elPhoneNumberInput.value.length > 3 || allResultsArr.map(el => el.phoneNumber).includes(elPhoneNumberInput.value)) {
+        if (elPhoneNumberInput.value === null || isNaN(elPhoneNumberInput.value) || elPhoneNumberInput.value.indexOf(' ') >= 8 || elPhoneNumberInput.value.length <= 8 || elPhoneNumberInput.value.length >= 13 || allResultsArr.map(el => el.phoneNumber).includes(elPhoneNumberInput.value)) {
           elPhoneNumberInput.classList.add('input-red-shadow');
           elPhoneNumberInput.classList.add('input-red-border');
           elPhoneNumberInput.placeholder = 'Iltimos raqamini kiriting';
